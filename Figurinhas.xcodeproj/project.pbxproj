@@ -11,6 +11,7 @@
 		7F88797C29FE1DF100E957E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88797B29FE1DF100E957E6 /* ContentView.swift */; };
 		7F88797E29FE1DF200E957E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F88797D29FE1DF200E957E6 /* Assets.xcassets */; };
 		7F88798129FE1DF200E957E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F88798029FE1DF200E957E6 /* Preview Assets.xcassets */; };
+		7F88798829FEC77200E957E6 /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88798729FEC77200E957E6 /* PropertiesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		7F88797B29FE1DF100E957E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F88797D29FE1DF200E957E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F88798029FE1DF200E957E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7F88798729FEC77200E957E6 /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				7F88797929FE1DF100E957E6 /* FigurinhasApp.swift */,
 				7F88797B29FE1DF100E957E6 /* ContentView.swift */,
+				7F88798729FEC77200E957E6 /* PropertiesView.swift */,
 				7F88797D29FE1DF200E957E6 /* Assets.xcassets */,
 				7F88797F29FE1DF200E957E6 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F88798829FEC77200E957E6 /* PropertiesView.swift in Sources */,
 				7F88797C29FE1DF100E957E6 /* ContentView.swift in Sources */,
 				7F88797A29FE1DF100E957E6 /* FigurinhasApp.swift in Sources */,
 			);

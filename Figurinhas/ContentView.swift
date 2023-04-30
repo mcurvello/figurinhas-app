@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var itensNaColecao: Int = 0
+    
     var body: some View {
        
         VStack(alignment: .leading) {
@@ -30,23 +33,8 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: 100)
                 VStack(alignment: .leading) {
-                    HStack{
-                        Image(systemName: "lifepreserver")
-                            .foregroundColor(Color.green)
-                            .font(.system(size: 30))
-                            .frame(width: 30.0)
-                        Text("Vidas:")
-                        Text("2")
-                            .padding(.trailing)
-                    }
-                    HStack{
-                        Image(systemName: "bolt")
-                            .foregroundColor(Color.yellow)
-                            .font(.system(size: 30))
-                            .frame(width: 30.0)
-                        Text("Potência:")
-                        Text("60%")
-                    }
+                    PropertiesView()
+                    PropertiesView(imagem: "bolt", nome: "Potência: ", valor: "60%", cor: Color.yellow)
                 }
                 Spacer()
                 
@@ -60,6 +48,28 @@ struct ContentView: View {
                 Spacer()
             }
             Spacer()
+            HStack{
+                Spacer()
+                Button {
+                               itensNaColecao += 1
+                           } label: {
+                               if itensNaColecao == 0 {
+                                   Text("Adicionar à coleção")
+                                       .padding()
+                                       .background(.blue)
+                                       .foregroundColor(.white)
+                               } else {
+                                   Text("Na sua coleção: \(itensNaColecao)")
+                                       .padding()
+                                       .background(.green)
+                               }
+                               
+                           }
+                           .cornerRadius(30.0)
+                Spacer()
+            }.padding()
+           
+
         }
         
     }
