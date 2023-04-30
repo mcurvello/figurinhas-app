@@ -14,16 +14,26 @@ struct PropertiesView: View {
     var valor = "2"
     var cor = Color.green
     
+    @State var apresentado = false
+    
     var body: some View {
-        HStack{
-            Image(systemName: imagem)
-                .foregroundColor(cor)
-                .font(.system(size: 30))
-                .frame(width: 30.0)
-            Text(nome)
-            Text(valor)
-                .padding(.trailing)
+        Button {
+            apresentado = true
+        } label: {
+            HStack{
+                Image(systemName: imagem)
+                    .foregroundColor(cor)
+                    .font(.system(size: 30))
+                    .frame(width: 30.0)
+                Text(nome)
+                Text(valor)
+                    .padding(.trailing)
+            }
         }
+        .sheet(isPresented: $apresentado) {
+            PropertyEditView()
+        }
+
     }
 }
 
