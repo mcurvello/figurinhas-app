@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+enum PropertyType {
+    case numeroInteiro
+    case numeroDecimal
+    case texto
+}
+
 struct PropertiesView: View {
     
-    var imagem = "lifepreserver"
-    var nome = "Vidas: "
-    var valor = "2"
-    var cor = Color.green
+    var imagem: String = "lifepreserver"
+    var nome: String = "Vidas: "
+    @Binding var valor: String
+    @Binding var valorInt: Int
+    @Binding var valorDecimal: Double
+    var cor: Color = .green
+    var tipo: PropertyType = .numeroInteiro
     
     @State var apresentado = false
     
@@ -26,12 +35,24 @@ struct PropertiesView: View {
                     .font(.system(size: 30))
                     .frame(width: 30.0)
                 Text(nome)
-                Text(valor)
-                    .padding(.trailing)
+                
+                if tipo == .texto {
+                    Text(valor)
+                        .padding(.trailing)
+                }
+                if tipo == .numeroInteiro {
+                    Text("\(valorInt)")
+                        .padding(.trailing)
+                }
+                if tipo == .numeroDecimal {
+                    Text("\(valorDecimal * 100, specifier: "%.0f")%")
+                        .padding(.trailing)
+                }
+                
             }
         }
         .sheet(isPresented: $apresentado) {
-            PropertyEditView()
+            PropertyEditView(valor: $valor, valorInt: $valorInt, valorDecimal: $valorDecimal, tipo: tipo)
         }
 
     }
@@ -39,6 +60,6 @@ struct PropertiesView: View {
 
 struct PropertiesView_Previews: PreviewProvider {
     static var previews: some View {
-        PropertiesView()
+        PropertiesView(valor: .constant(""), valorInt: .constant(0), valorDecimal: .constant(1.0))
     }
 }

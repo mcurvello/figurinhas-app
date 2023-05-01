@@ -14,16 +14,8 @@ struct FigurinhasView: View {
         List(figuras){
             figura in
             NavigationLink(destination:
-                            FigurinhaDetailView(figura: figuras[0])){
-                HStack {
-                    Image(figura.imagem+"_p")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .background(Color.gray)
-                        .containerShape(Circle())
-                    Text(figura.nome)
-                }
+                FigurinhaDetailView(figura: figura)){
+                FigurinhasLinhaView(figura: figura)
             }
         }
         .navigationTitle("Figuras")

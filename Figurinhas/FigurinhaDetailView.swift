@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FigurinhaDetailView: View {
     
-    @State var itensNaColecao: Int = 0
-    var figura: Figura
+    @ObservedObject var figura: Figura
+    @EnvironmentObject var minhaColecao: MinhaColecao
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,8 +29,8 @@ struct FigurinhaDetailView: View {
                     .scaledToFit()
                     .frame(width: 100)
                 VStack(alignment: .leading) {
-                    PropertiesView()
-                    PropertiesView(imagem: "bolt", nome: "Potência: ", valor: "60%", cor: Color.yellow)
+                    PropertiesView(valor: .constant(""), valorInt: $figura.vidas, valorDecimal: .constant(1.0), tipo: .numeroInteiro)
+                    PropertiesView(imagem: "bolt", nome: "Potência: ", valor: .constant(""), valorInt: .constant(0), valorDecimal: $figura.potencia, cor: .yellow, tipo: .numeroDecimal)
                 }
                 Spacer()
                 
@@ -47,17 +47,18 @@ struct FigurinhaDetailView: View {
             HStack{
                 Spacer()
                 Button {
-                               itensNaColecao += 1
-                           } label: {
-                               if itensNaColecao == 0 {
-                                   Text("Adicionar à coleção")
-                                       .padding()
-                                       .background(.blue)
-                                       .foregroundColor(.white)
-                               } else {
-                                   Text("Na sua coleção: \(itensNaColecao)")
-                                       .padding()
-                                       .background(.green)
+                    minhaColecao.figuras.append(figura)
+                    minhaColecao.salvar()
+                } label: {
+                    if minhaColecao.figuras.count == 0 {
+                        Text("Adicionar à coleção")
+                            .padding()
+                            .background(.blue)
+                            .foregroundColor(.white)
+                        } else {
+                            Text("Na sua coleção: \(minhaColecao.figuras.count)")
+                                .padding()
+                                .background(.green)
                                }
                                
                            }
